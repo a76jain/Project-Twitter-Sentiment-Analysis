@@ -52,3 +52,10 @@ tweets = tw.Cursor(api.search,
 
 # Remove URLs
 tweets_no_urls = [remove_url(tweet.text) for tweet in tweets]
+
+# Create textblob objects of the tweets
+sentiment_objects = [TextBlob(tweet) for tweet in tweets_no_urls]
+
+sentiment_objects[0].polarity, sentiment_objects[0]
+##(-0.2, TextBlob("InsuranceBureau Hey Yoohoo Hey InsuranceBureau Maybe sometime before today and everyday from now on you sh"))
+
