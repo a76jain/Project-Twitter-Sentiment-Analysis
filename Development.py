@@ -59,3 +59,13 @@ sentiment_objects = [TextBlob(tweet) for tweet in tweets_no_urls]
 sentiment_objects[0].polarity, sentiment_objects[0]
 ##(-0.2, TextBlob("InsuranceBureau Hey Yoohoo Hey InsuranceBureau Maybe sometime before today and everyday from now on you sh"))
 
+# Create list of polarity valuesx and tweet text
+sentiment_values = [[tweet.sentiment.polarity, str(tweet)] for tweet in sentiment_objects]
+
+sentiment_values[0]
+#[-0.2, 'InsuranceBureau Hey Yoohoo Hey InsuranceBureau Maybe sometime before today and everyday from now on you sh']
+
+# Create dataframe containing the polarity value and tweet text
+sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "tweet"])
+
+sentiment_df.head()
