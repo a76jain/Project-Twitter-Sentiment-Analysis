@@ -69,3 +69,13 @@ sentiment_values[0]
 sentiment_df = pd.DataFrame(sentiment_values, columns=["polarity", "tweet"])
 
 sentiment_df.head()
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Plot histogram of the polarity values
+sentiment_df.hist(bins=[-1, -0.75, -0.5, -0.25, 0.25, 0.5, 0.75, 1],
+             ax=ax,
+             color="purple")
+
+plt.title("Sentiments from Tweets on Climate Change")
+plt.show()
