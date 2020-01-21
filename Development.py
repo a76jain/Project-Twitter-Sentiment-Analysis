@@ -43,12 +43,12 @@ def remove_url(txt):
 
     return " ".join(re.sub("([^0-9A-Za-z \t])|(\w+:\/\/\S+)", "", txt).split())
 # Create a custom search term and define the number of tweets
-search_term = "#climate+change -filter:retweets"
+search_term = "#Trump"
 
 tweets = tw.Cursor(api.search,
                    q=search_term,
                    lang="en",
-                   since='2018-11-01').items(1000)
+                   since='2016-01-01').items(10000)
 
 # Remove URLs
 tweets_no_urls = [remove_url(tweet.text) for tweet in tweets]
@@ -73,9 +73,7 @@ sentiment_df.head()
 fig, ax = plt.subplots(figsize=(8, 6))
 
 # Plot histogram of the polarity values
-sentiment_df.hist(bins=[-1, -0.75, -0.5, -0.25, 0.25, 0.5, 0.75, 1],
-             ax=ax,
-             color="purple")
+sentiment_df.hist(bins=[-1, -0.75, -0.5, -0.25, 0.25, 0.5, 0.75, 1], ax=ax, color="purple")
 
-plt.title("Sentiments from Tweets on Climate Change")
+plt.title("Sentiments from Tweets on Trump")
 plt.show()
